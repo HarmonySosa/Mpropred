@@ -86,7 +86,9 @@ if selected == "Predict":
     # Model building section
     def build_model(input_data):
         # Reads in saved regression model
+        print("test") # del
         load_model = pickle.load(open('Mpro_model.pkl', 'rb'))
+        print(load_model) # del
         # Apply model to make predictions
         prediction = load_model.predict(input_data)
         st.header('**Prediction results**')
@@ -118,11 +120,13 @@ if selected == "Predict":
         desc = pd.read_csv('descriptors_output.csv')
         st.write(desc)
         st.write(desc.shape)
+        print(desc_subset) # i added
 
         # Read the descriptor list used in previously built model
         st.header('**Subset of descriptors from MACCS models**')
         Xlist = list(pd.read_csv('lists_of_descriptor.csv').columns)
         desc_subset = desc[Xlist]
+        print(desc_subset)  # i added this
         st.write(desc_subset)
         st.write(desc_subset.shape)
 
